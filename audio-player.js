@@ -26,7 +26,9 @@ function createBeatCard(beat) {
             <div class="time-display">0:00 / 0:00</div>
         </div>
         <audio class="audio-element" src="${beat.audioFile}" preload="metadata"></audio>
-        <button class="purchase-button">Purchase</button>
+        <a href="contact.html">
+  <button class="purchase-button">Contact Us</button>
+</a>
     `;
     
     return card;
