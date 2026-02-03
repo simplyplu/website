@@ -34,6 +34,35 @@
         <p>&copy; 2024 woo1 Beats. All rights reserved.</p>
     </footer>
 
+    <!-- Bottom Audio Player Bar -->
+    <div class="bottom-player" id="bottomPlayer">
+        <div class="player-content">
+            <div class="player-info">
+                <span class="player-track-name" id="playerTrackName">No track selected</span>
+            </div>
+            <div class="player-controls">
+                <button class="player-play-button" id="playerPlayButton">
+                    <span class="player-play-icon"></span>
+                </button>
+                <div class="player-progress-container">
+                    <div class="player-progress-bar" id="playerProgressBar">
+                        <div class="player-progress-handle"></div>
+                    </div>
+                </div>
+                <div class="player-time-display" id="playerTimeDisplay">0:00 / 0:00</div>
+            </div>
+            <div class="player-volume-control">
+                <button class="player-volume-button" id="playerVolumeButton">
+                    <span class="player-volume-icon">🔊</span>
+                </button>
+                <div class="player-volume-slider-container">
+                    <input type="range" class="player-volume-slider" id="playerVolumeSlider" min="0" max="100" value="100">
+                </div>
+            </div>
+        </div>
+        <audio id="globalAudio" preload="metadata"></audio>
+    </div>
+
     <script src="beats-data.js"></script>
     <script src="audio-player.js"></script>
 </body>
