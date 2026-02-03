@@ -1,60 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>woo1 Beats - Catalog</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light dark" />
+  <title>woo1 Beats - Catalog</title>
 
-    <!-- Prevent theme flash -->
-    <script>
-      (function () {
-        try {
-          const saved = localStorage.getItem("theme");
-          const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-          const theme = saved === "dark" || saved === "light" ? saved : (prefersDark ? "dark" : "light");
-          document.documentElement.setAttribute("data-theme", theme);
-        } catch (e) {}
-      })();
-    </script>
+  <style>body{opacity:0}</style>
 
-    <link rel="stylesheet" href="styles.css" />
-    <script src="app.js" defer></script>
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = (saved === "dark" || saved === "light") ? saved : (prefersDark ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+        const bg = theme === "dark" ? "#07080c" : "#f8fafc";
+        document.documentElement.style.backgroundColor = bg;
+        document.body && (document.body.style.backgroundColor = bg);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="logo">woo1</a>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">woo1</a>
 
-            <div class="nav-links">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="beats.html" class="nav-link active">Beats</a>
-                <a href="contact.html" class="nav-link">Contact</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="beats.html" class="nav-link active">Beats</a>
+        <a href="contact.html" class="nav-link">Contact</a>
 
-                <button class="theme-toggle" type="button" aria-label="Toggle theme">
-                    <svg class="theme-icon" viewBox="0 0 24 24" aria-hidden="true"></svg>
-                </button>
-            </div>
-        </div>
-    </nav>
+        <button class="theme-toggle" type="button" aria-label="Toggle theme">
+          <svg class="theme-icon" viewBox="0 0 24 24" aria-hidden="true"></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
 
-    <main class="main-content">
-        <section class="beats-section">
-            <div class="beats-header">
-                <h1 class="page-title">woo1's Beat Catalog</h1>
-                <p class="page-subtitle">Preview and purchase your favorite beats with an exclusive license.</p>
-            </div>
+  <main class="main-content">
+    <section class="beats-section">
+      <div class="beats-header">
+        <h1 class="page-title">woo1's Beat Catalog</h1>
+        <p class="page-subtitle">Preview and purchase your favorite beats with an exclusive license.</p>
+      </div>
 
-            <div class="beats-grid" id="beatsGrid">
-                <!-- Beats will be dynamically loaded here -->
-            </div>
-        </section>
-    </main>
+      <div class="beats-grid" id="beatsGrid"></div>
+    </section>
+  </main>
 
-    <footer class="footer">
-        <p>&copy; 2024 woo1 Beats. All rights reserved.</p>
-    </footer>
+  <footer class="footer">
+    <p>&copy; 2026 woo1 Beats. All rights reserved.</p>
+  </footer>
 
-    <script src="beats-data.js"></script>
-    <script src="audio-player.js"></script>
+  <script src="beats-data.js"></script>
+  <script src="audio-player.js"></script>
 </body>
 </html>
