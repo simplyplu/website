@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>woo1 Beats - Contact</title>
+    <title>woo1 Beats - Catalog</title>
 
     <!-- Prevent theme flash -->
     <script>
@@ -27,8 +27,8 @@
 
             <div class="nav-links">
                 <a href="index.html" class="nav-link">Home</a>
-                <a href="beats.html" class="nav-link">Beats</a>
-                <a href="contact.html" class="nav-link active">Contact</a>
+                <a href="beats.html" class="nav-link active">Beats</a>
+                <a href="contact.html" class="nav-link">Contact</a>
 
                 <button class="theme-toggle" type="button" aria-label="Toggle theme">
                     <svg class="theme-icon" viewBox="0 0 24 24" aria-hidden="true"></svg>
@@ -38,30 +38,23 @@
     </nav>
 
     <main class="main-content">
-        <section class="contact-section">
-            <div class="contact-container">
-                <h1 class="contact-title">Get in Touch</h1>
-                <p class="contact-subtitle">Reach out for inquiries, collaborations, or submissions</p>
+        <section class="beats-section">
+            <div class="beats-header">
+                <h1 class="page-title">woo1's Beat Catalog</h1>
+                <p class="page-subtitle">Preview and purchase your favorite beats with an exclusive license.</p>
+            </div>
 
-                <div class="contact-card">
-                    <h2>Contact Us</h2>
-                    <p>For all inquiries, collaborations, and submissions</p>
-
-                    <a class="contact-email" href="mailto:contact@flatearthrecords.lol">contact@flatearthrecords.lol</a>
-
-                    <a class="contact-instagram" href="https://instagram.com/flatearthrecords" target="_blank" rel="noopener">
-                        <svg class="ig-icon" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5ZM12 7.3A4.7 4.7 0 1 1 7.3 12 4.7 4.7 0 0 1 12 7.3Zm0 7.4A2.7 2.7 0 1 0 9.3 12 2.7 2.7 0 0 0 12 14.7ZM17.1 6.4a1.1 1.1 0 1 1-1.1-1.1 1.1 1.1 0 0 1 1.1 1.1Z"/>
-                        </svg>
-                        Follow us on Instagram
-                    </a>
-                </div>
+            <div class="beats-grid" id="beatsGrid">
+                <!-- Beats will be dynamically loaded here -->
             </div>
         </section>
     </main>
 
     <footer class="footer">
-        <p>&copy; 2026 woo1 Beats. All rights reserved.</p>
+        <p>&copy; 2024 woo1 Beats. All rights reserved.</p>
     </footer>
+
+    <script src="beats-data.js"></script>
+    <script src="audio-player.js"></script>
 </body>
 </html>
