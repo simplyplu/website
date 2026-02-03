@@ -1,67 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>woo1 Beats - Contact</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light dark" />
+  <title>woo1 Beats - Contact</title>
 
-    <!-- Prevent theme flash -->
-    <script>
-      (function () {
-        try {
-          const saved = localStorage.getItem("theme");
-          const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-          const theme = saved === "dark" || saved === "light" ? saved : (prefersDark ? "dark" : "light");
-          document.documentElement.setAttribute("data-theme", theme);
-        } catch (e) {}
-      })();
-    </script>
+  <style>body{opacity:0}</style>
 
-    <link rel="stylesheet" href="styles.css" />
-    <script src="app.js" defer></script>
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = (saved === "dark" || saved === "light") ? saved : (prefersDark ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+        const bg = theme === "dark" ? "#07080c" : "#f8fafc";
+        document.documentElement.style.backgroundColor = bg;
+        document.body && (document.body.style.backgroundColor = bg);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="logo">woo1</a>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">woo1</a>
 
-            <div class="nav-links">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="beats.html" class="nav-link">Beats</a>
-                <a href="contact.html" class="nav-link active">Contact</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="beats.html" class="nav-link">Beats</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
 
-                <button class="theme-toggle" type="button" aria-label="Toggle theme">
-                    <svg class="theme-icon" viewBox="0 0 24 24" aria-hidden="true"></svg>
-                </button>
-            </div>
+        <button class="theme-toggle" type="button" aria-label="Toggle theme">
+          <svg class="theme-icon" viewBox="0 0 24 24" aria-hidden="true"></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <section class="contact-section">
+      <div class="contact-container">
+        <h1 class="contact-title">Get in Touch</h1>
+        <p class="contact-subtitle">Reach out for inquiries, collaborations, or submissions</p>
+
+        <div class="contact-card">
+          <h2>Contact Us</h2>
+          <p>For all inquiries, collaborations, and submissions</p>
+
+          <a class="contact-email" href="mailto:contact@flatearthrecords.lol">contact@flatearthrecords.lol</a>
+
+          <a class="contact-instagram" href="https://instagram.com/flatearthrecords" target="_blank" rel="noopener">
+            <svg class="ig-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5ZM12 7.3A4.7 4.7 0 1 1 7.3 12 4.7 4.7 0 0 1 12 7.3Zm0 7.4A2.7 2.7 0 1 0 9.3 12 2.7 2.7 0 0 0 12 14.7ZM17.1 6.4a1.1 1.1 0 1 1-1.1-1.1 1.1 1.1 0 0 1 1.1 1.1Z"/>
+            </svg>
+            Follow us on Instagram
+          </a>
         </div>
-    </nav>
+      </div>
+    </section>
+  </main>
 
-    <main class="main-content">
-        <section class="contact-section">
-            <div class="contact-container">
-                <h1 class="contact-title">Get in Touch</h1>
-                <p class="contact-subtitle">Reach out for inquiries, collaborations, or submissions</p>
-
-                <div class="contact-card">
-                    <h2>Contact Us</h2>
-                    <p>For all inquiries, collaborations, and submissions</p>
-
-                    <a class="contact-email" href="mailto:contact@flatearthrecords.lol">contact@flatearthrecords.lol</a>
-
-                    <a class="contact-instagram" href="https://instagram.com/flatearthrecords" target="_blank" rel="noopener">
-                        <svg class="ig-icon" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5ZM12 7.3A4.7 4.7 0 1 1 7.3 12 4.7 4.7 0 0 1 12 7.3Zm0 7.4A2.7 2.7 0 1 0 9.3 12 2.7 2.7 0 0 0 12 14.7ZM17.1 6.4a1.1 1.1 0 1 1-1.1-1.1 1.1 1.1 0 0 1 1.1 1.1Z"/>
-                        </svg>
-                        Follow us on Instagram
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <p>&copy; 2026 woo1 Beats. All rights reserved.</p>
-    </footer>
+  <footer class="footer">
+    <p>&copy; 2026 woo1 Beats. All rights reserved.</p>
+  </footer>
 </body>
 </html>
