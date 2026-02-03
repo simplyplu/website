@@ -36,7 +36,7 @@ function createBeatCard(beat) {
             </div>
         </div>
         <audio class="audio-element" src="${beat.audioFile}" preload="metadata"></audio>
-        <button class="purchase-button">Purchase</button>
+        <button class="purchase-button">Interested in buying? Contact us on Instagram</button>
     `;
     
     return card;
