@@ -1,74 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>woo1 Beats - Home</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light dark" />
+  <title>woo1 Beats - Home</title>
 
-    <!-- Prevent theme flash (runs BEFORE CSS paints) -->
-    <script>
-      (function () {
-        try {
-          const saved = localStorage.getItem("theme");
-          const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-          const theme = saved === "dark" || saved === "light" ? saved : (prefersDark ? "dark" : "light");
-          document.documentElement.setAttribute("data-theme", theme);
-        } catch (e) {}
-      })();
-    </script>
+  <!-- 1) Hide instantly BEFORE CSS loads (kills flash) -->
+  <style>body{opacity:0}</style>
 
-    <link rel="stylesheet" href="styles.css" />
-    <script src="app.js" defer></script>
+  <!-- 2) Set theme + background instantly BEFORE CSS loads -->
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = (saved === "dark" || saved === "light") ? saved : (prefersDark ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+
+        const bg = theme === "dark" ? "#07080c" : "#f8fafc";
+        document.documentElement.style.backgroundColor = bg;
+        document.body && (document.body.style.backgroundColor = bg);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="logo">woo1</a>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">woo1</a>
 
-            <div class="nav-links">
-                <a href="index.html" class="nav-link active">Home</a>
-                <a href="beats.html" class="nav-link">Beats</a>
-                <a href="contact.html" class="nav-link">Contact</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="beats.html" class="nav-link">Beats</a>
+        <a href="contact.html" class="nav-link">Contact</a>
 
-                <button class="theme-toggle" type="button" aria-label="Toggle theme">
-                    <svg class="theme-icon" viewBox="0 0 24 24" aria-hidden="true"></svg>
-                </button>
-            </div>
+        <button class="theme-toggle" type="button" aria-label="Toggle theme">
+          <svg class="theme-icon" viewBox="0 0 24 24" aria-hidden="true"></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">Woo1's Premium Beats</h1>
+        <p class="hero-subtitle">Discover and purchase high-quality beats</p>
+        <a href="beats.html" class="cta-button">Explore Beats</a>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🎵</div>
+          <h3>High Quality</h3>
+          <p>Professional-grade beats crafted for your projects</p>
         </div>
-    </nav>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Instant Access</h3>
+          <p>Purchase and download immediately with exclusive rights</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h3>Diverse Styles</h3>
+          <p>Wide range of genres and moods</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    <main class="main-content">
-        <section class="hero">
-            <div class="hero-content">
-                <h1 class="hero-title">Woo1's Premium Beats</h1>
-                <p class="hero-subtitle">Discover and purchase high-quality beats</p>
-                <a href="beats.html" class="cta-button">Explore Beats</a>
-            </div>
-        </section>
-
-        <section class="features">
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🎵</div>
-                    <h3>High Quality</h3>
-                    <p>Professional-grade beats crafted for your projects</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Instant Access</h3>
-                    <p>Purchase and download immediately with exclusive rights</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎨</div>
-                    <h3>Diverse Styles</h3>
-                    <p>Wide range of genres and moods</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <p>&copy; 2026 woo1 Beats. All rights reserved.</p>
-    </footer>
+  <footer class="footer">
+    <p>&copy; 2026 woo1 Beats. All rights reserved.</p>
+  </footer>
 </body>
 </html>
