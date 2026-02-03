@@ -107,7 +107,8 @@ body.page-leave{
 
 a, button { -webkit-tap-highlight-color: transparent; }
 a { color: inherit; }
-::selection { background: rgba(109,94,252,.22); }
+::selection { background: rgba(255,255,255,.35); color: var(--primary-color); }
+
 
 :focus-visible{
   outline: none;
