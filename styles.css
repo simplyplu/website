@@ -443,7 +443,7 @@ a { color: inherit; }
 .purchase-button{
   width: 100%;
   margin-top: .35rem;
-  border-radius: 14px; /* less pill so it looks like a “card action” */
+  border-radius: 14px;
   padding: 0.95rem;
 }
 
@@ -482,4 +482,138 @@ a { color: inherit; }
   .nav-container{ padding: 0 1rem; }
   .main-content{ padding: 2.5rem 1rem; }
   .beats-grid{ grid-template-columns: 1fr; }
+}
+
+/* =========================
+   Contact Page (matches theme + animated glow + IG icon)
+   ========================= */
+
+.contact-section{
+  min-height: calc(100vh - 160px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+}
+
+.contact-container{
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+}
+
+.contact-title{
+  font-size: clamp(2.6rem, 5vw, 3.6rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  margin-bottom: 0.75rem;
+}
+
+.contact-subtitle{
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 3.5rem;
+}
+
+.contact-card{
+  position: relative;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-radius: 24px;
+  padding: 3rem 2.5rem;
+
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+/* animated glow behind card */
+.contact-card::before{
+  content:"";
+  position: absolute;
+  inset: -40%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(109,94,252,0.35), transparent 40%),
+    radial-gradient(circle at 70% 70%, rgba(34,197,94,0.25), transparent 45%);
+  animation: contactGlow 12s ease-in-out infinite;
+  z-index: 0;
+}
+
+.contact-card::after{
+  content:"";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.86);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 1;
+}
+
+.contact-card > *{
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes contactGlow{
+  0%{ transform: translate(0, 0); }
+  50%{ transform: translate(8%, -6%); }
+  100%{ transform: translate(0, 0); }
+}
+
+.contact-card h2{
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+}
+
+.contact-card p{
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  margin-bottom: 2.25rem;
+}
+
+.contact-email{
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-decoration: none;
+  margin-bottom: 2.5rem;
+}
+
+.contact-email:hover{
+  text-decoration: underline;
+}
+
+.contact-instagram{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  padding: 0.95rem 1.6rem;
+  font-size: 1rem;
+  font-weight: 700;
+
+  border-radius: 14px;
+  text-decoration: none;
+
+  color: var(--primary-color);
+  background: rgba(17, 24, 39, 0.06);
+  border: 1px solid rgba(17, 24, 39, 0.12);
+
+  transition: var(--transition);
+}
+
+.contact-instagram:hover{
+  transform: translateY(-2px);
+  background: rgba(17, 24, 39, 0.10);
+  box-shadow: 0 14px 40px rgba(15, 23, 42, 0.18);
+}
+
+.ig-icon{
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
 }
