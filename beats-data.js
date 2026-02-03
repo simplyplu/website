@@ -5,8 +5,9 @@
 const beatsData = [
     {
         id: 1,
-        name: "woo1",
-        audioFile: "beats/woo1.mp3"
+        name: "Guitar Sad Type Beat - 'Bitter Feelings'
+",
+        audioFile: "beats/bitterfeelings.mp3"
     }
     // To add more beats, copy the format above and add here:
     // {
