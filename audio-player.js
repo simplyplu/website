@@ -24,6 +24,14 @@ function createBeatCard(beat) {
                 <div class="progress-bar"></div>
             </div>
             <div class="time-display">0:00 / 0:00</div>
+            <div class="volume-control">
+                <button class="volume-button" data-beat-id="${beat.id}">
+                    <span class="volume-icon">🔊</span>
+                </button>
+                <div class="volume-slider-container">
+                    <input type="range" class="volume-slider" min="0" max="100" value="100" data-beat-id="${beat.id}">
+                </div>
+            </div>
         </div>
         <audio class="audio-element" src="${beat.audioFile}" preload="metadata"></audio>
         <button class="purchase-button">Purchase</button>
@@ -47,6 +55,12 @@ function loadBeats() {
         const progressBar = card.querySelector('.progress-bar');
         const progressContainer = card.querySelector('.progress-container');
         const timeDisplay = card.querySelector('.time-display');
+        const volumeButton = card.querySelector('.volume-button');
+        const volumeSlider = card.querySelector('.volume-slider');
+        const volumeIcon = card.querySelector('.volume-icon');
+        
+        // Set initial volume
+        audio.volume = 1.0;
         
         // Update time display
         audio.addEventListener('loadedmetadata', () => {
@@ -109,6 +123,45 @@ function loadBeats() {
             if (currentAudio === audio) {
                 currentAudio = null;
                 currentCard = null;
+            }
+        });
+        
+        // Handle volume slider
+        volumeSlider.addEventListener('input', (e) => {
+            const volume = e.target.value / 100;
+            audio.volume = volume;
+            
+            // Update icon based on volume level
+            if (volume === 0) {
+                volumeIcon.textContent = '🔇';
+            } else if (volume < 0.5) {
+                volumeIcon.textContent = '🔉';
+            } else {
+                volumeIcon.textContent = '🔊';
+            }
+        });
+        
+        // Handle volume button (mute/unmute)
+        volumeButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            
+            if (audio.volume > 0) {
+                // Store current volume and mute
+                volumeSlider.dataset.previousVolume = volumeSlider.value;
+                audio.volume = 0;
+                volumeSlider.value = 0;
+                volumeIcon.textContent = '🔇';
+            } else {
+                // Restore previous volume or default to 100
+                const previousVolume = volumeSlider.dataset.previousVolume || 100;
+                audio.volume = previousVolume / 100;
+                volumeSlider.value = previousVolume;
+                
+                if (previousVolume < 50) {
+                    volumeIcon.textContent = '🔉';
+                } else {
+                    volumeIcon.textContent = '🔊';
+                }
             }
         });
     });
