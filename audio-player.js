@@ -21,7 +21,9 @@ function createBeatCard(beat) {
                 <span class="play-icon"></span>
             </button>
             <div class="progress-container">
-                <div class="progress-bar"></div>
+                <div class="progress-bar">
+                    <div class="progress-handle"></div>
+                </div>
             </div>
             <div class="time-display">0:00 / 0:00</div>
             <div class="volume-control">
@@ -53,6 +55,7 @@ function loadBeats() {
         const playButton = card.querySelector('.play-button');
         const audio = card.querySelector('.audio-element');
         const progressBar = card.querySelector('.progress-bar');
+        const progressHandle = card.querySelector('.progress-handle');
         const progressContainer = card.querySelector('.progress-container');
         const timeDisplay = card.querySelector('.time-display');
         const volumeButton = card.querySelector('.volume-button');
@@ -62,19 +65,24 @@ function loadBeats() {
         // Set initial volume
         audio.volume = 1.0;
         
-        // Update time display
-        audio.addEventListener('loadedmetadata', () => {
-            timeDisplay.textContent = `0:00 / ${formatTime(audio.duration)}`;
-        });
+        let isDragging = false;
         
         // Update progress
-        audio.addEventListener('timeupdate', () => {
-            if (audio.duration) {
+        const updateProgress = () => {
+            if (audio.duration && !isDragging) {
                 const progress = (audio.currentTime / audio.duration) * 100;
                 progressBar.style.width = progress + '%';
                 timeDisplay.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
             }
+        };
+        
+        // Update time display when metadata loads
+        audio.addEventListener('loadedmetadata', () => {
+            timeDisplay.textContent = `0:00 / ${formatTime(audio.duration)}`;
+            updateProgress();
         });
+        
+        audio.addEventListener('timeupdate', updateProgress);
         
         // Handle play/pause
         playButton.addEventListener('click', (e) => {
@@ -84,12 +92,16 @@ function loadBeats() {
                 // Stop other audio
                 currentAudio.pause();
                 currentAudio.currentTime = 0;
-                if (currentCard) {
-                    const prevButton = currentCard.querySelector('.play-button');
-                    const prevProgress = currentCard.querySelector('.progress-bar');
-                    prevButton.classList.remove('playing');
-                    prevProgress.style.width = '0%';
+            if (currentCard) {
+                const prevButton = currentCard.querySelector('.play-button');
+                const prevProgress = currentCard.querySelector('.progress-bar');
+                prevButton.classList.remove('playing');
+                prevProgress.style.width = '0%';
+                const prevProgressContainer = currentCard.querySelector('.progress-container');
+                if (prevProgressContainer) {
+                    prevProgressContainer.classList.remove('dragging');
                 }
+            }
             }
             
             if (audio.paused) {
@@ -107,12 +119,62 @@ function loadBeats() {
             }
         });
         
-        // Handle progress bar click
-        progressContainer.addEventListener('click', (e) => {
+        // Handle progress bar interaction (click and drag)
+        const setProgress = (e) => {
             const rect = progressContainer.getBoundingClientRect();
-            const clickX = e.clientX - rect.left;
+            const clickX = Math.max(0, Math.min(e.clientX - rect.left, rect.width));
             const percentage = clickX / rect.width;
             audio.currentTime = percentage * audio.duration;
+            progressBar.style.width = (percentage * 100) + '%';
+            timeDisplay.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
+        };
+        
+        progressContainer.addEventListener('click', (e) => {
+            if (!isDragging) {
+                setProgress(e);
+            }
+        });
+        
+        // Drag functionality
+        progressContainer.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            progressContainer.classList.add('dragging');
+            setProgress(e);
+        });
+        
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging && currentAudio === audio) {
+                setProgress(e);
+            }
+        });
+        
+        document.addEventListener('mouseup', () => {
+            if (isDragging) {
+                isDragging = false;
+                progressContainer.classList.remove('dragging');
+            }
+        });
+        
+        // Touch support for mobile
+        progressContainer.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            progressContainer.classList.add('dragging');
+            const touch = e.touches[0];
+            setProgress(touch);
+        });
+        
+        document.addEventListener('touchmove', (e) => {
+            if (isDragging && currentAudio === audio) {
+                const touch = e.touches[0];
+                setProgress(touch);
+            }
+        });
+        
+        document.addEventListener('touchend', () => {
+            if (isDragging) {
+                isDragging = false;
+                progressContainer.classList.remove('dragging');
+            }
         });
         
         // Reset when audio ends
