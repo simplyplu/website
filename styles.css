@@ -2,6 +2,7 @@
    Modern / Pro refresh
    + Smooth transitions
    + Light/Dark mode
+   + Glass pill buttons (ALL)
    ========================= */
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -31,6 +32,12 @@
   --ring: 0 0 0 4px rgba(109,94,252,.22);
 
   --container: 1200px;
+
+  /* Button glass */
+  --btn-bg: rgba(17, 24, 39, 0.08);
+  --btn-border: rgba(255, 255, 255, 0.18);
+  --btn-shadow: 0 18px 60px rgba(15,23,42,.22);
+  --btn-shadow-hover: 0 24px 70px rgba(15,23,42,.28);
 }
 
 /* ---------- DARK MODE OVERRIDES ---------- */
@@ -48,6 +55,12 @@ html[data-theme="dark"]{
   --shadow-lg: 0 40px 120px rgba(0,0,0,.55);
 
   --ring: 0 0 0 4px rgba(109,94,252,.28);
+
+  /* Button glass in dark */
+  --btn-bg: rgba(255, 255, 255, 0.06);
+  --btn-border: rgba(255, 255, 255, 0.14);
+  --btn-shadow: 0 18px 60px rgba(0,0,0,.50);
+  --btn-shadow-hover: 0 26px 80px rgba(0,0,0,.60);
 }
 
 html { scroll-behavior: smooth; }
@@ -99,7 +112,7 @@ a { color: inherit; }
 :focus-visible{
   outline: none;
   box-shadow: var(--ring);
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
 /* =========================
@@ -226,6 +239,71 @@ a { color: inherit; }
 }
 
 /* =========================
+   UNIVERSAL GLASS BUTTONS
+   ========================= */
+/* Apply the same style to ALL key buttons */
+.cta-button,
+.purchase-button,
+.contact-instagram,
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+
+  padding: 1.05rem 1.9rem;
+  border-radius: 18px;
+
+  font-weight: 800;
+  letter-spacing: .01em;
+  font-size: 1.05rem;
+
+  text-decoration: none;
+  cursor: pointer;
+
+  color: var(--primary-color);
+  background: var(--btn-bg);
+
+  border: 1px solid var(--btn-border);
+  box-shadow: var(--btn-shadow);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  transition: var(--transition);
+}
+
+.cta-button:hover,
+.purchase-button:hover,
+.contact-instagram:hover,
+.btn:hover{
+  transform: translateY(-2px);
+  box-shadow: var(--btn-shadow-hover);
+  border-color: rgba(109,94,252,.35);
+}
+
+.cta-button:active,
+.purchase-button:active,
+.contact-instagram:active,
+.btn:active{
+  transform: translateY(0);
+  box-shadow: var(--btn-shadow);
+}
+
+/* Optional: full-width button version */
+.purchase-button{
+  width: 100%;
+  border-radius: 18px;
+}
+
+/* Icons inside buttons */
+.ig-icon{
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+/* =========================
    HERO
    ========================= */
 .hero{
@@ -252,40 +330,6 @@ a { color: inherit; }
   color: var(--text-secondary);
   margin-bottom: 2.25rem;
   animation: fadeInUp 0.75s ease-out 0.15s both;
-}
-
-/* Buttons */
-.cta-button,
-.purchase-button{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: .6rem;
-
-  padding: 0.95rem 1.6rem;
-  border-radius: 999px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-
-  border: 1px solid rgba(17,24,39,.10);
-  cursor: pointer;
-  transition: var(--transition);
-  text-decoration: none;
-
-  background: linear-gradient(135deg, rgba(109,94,252,1) 0%, rgba(34,197,94,.85) 120%);
-  color: #fff;
-  box-shadow: 0 16px 40px rgba(109,94,252,.18);
-}
-
-.cta-button:hover,
-.purchase-button:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 22px 60px rgba(15,23,42,.18);
-}
-
-.cta-button:active,
-.purchase-button:active{
-  transform: translateY(0px) scale(.99);
 }
 
 /* =========================
@@ -510,13 +554,6 @@ html[data-theme="dark"] .progress-container{
   font-variant-numeric: tabular-nums;
 }
 
-.purchase-button{
-  width: 100%;
-  margin-top: .35rem;
-  border-radius: 14px;
-  padding: 0.95rem;
-}
-
 /* =========================
    CONTACT
    ========================= */
@@ -613,41 +650,6 @@ html[data-theme="dark"] .progress-container{
 
 .contact-email:hover{ text-decoration: underline; }
 
-.contact-instagram{
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-
-  padding: 0.95rem 1.6rem;
-  font-size: 1rem;
-  font-weight: 800;
-
-  border-radius: 14px;
-  text-decoration: none;
-
-  color: var(--primary-color);
-  background: rgba(17,24,39,0.06);
-  border: 1px solid var(--border-color);
-
-  transition: var(--transition);
-}
-
-html[data-theme="dark"] .contact-instagram{
-  background: rgba(255,255,255,0.06);
-}
-
-.contact-instagram:hover{
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  border-color: rgba(109,94,252,.30);
-}
-
-.ig-icon{
-  width: 20px;
-  height: 20px;
-  fill: currentColor;
-}
-
 /* =========================
    FOOTER
    ========================= */
@@ -671,13 +673,11 @@ html[data-theme="dark"] .contact-instagram{
   to{ opacity: 1; transform: translateY(0); }
 }
 
-/* Reduced motion */
 @media (prefers-reduced-motion: reduce){
   *{ animation: none !important; transition: none !important; }
   body{ opacity: 1 !important; transform: none !important; }
 }
 
-/* Responsive */
 @media (max-width: 768px){
   .nav-container{ padding: 0 1rem; }
   .main-content{ padding: 2.5rem 1rem; }
