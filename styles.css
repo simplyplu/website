@@ -62,25 +62,21 @@ body{
               transform 240ms cubic-bezier(.2,.9,.2,1);
 }
 
-/* when page finishes loading */
 body.page-ready{
   opacity: 1;
   transform: translateY(0);
 }
 
-/* when leaving (clicking nav) */
 body.page-leave{
   opacity: 0;
   transform: translateY(8px);
 }
 
-/* reduce motion users */
 @media (prefers-reduced-motion: reduce){
   body{ transition: none !important; transform: none !important; opacity: 1 !important; }
   body.page-ready, body.page-leave{ transform: none !important; opacity: 1 !important; }
 }
 
-/* Don’t translate on small screens to avoid weirdness */
 @media (max-width: 768px){
   body{ transform: none; }
   body.page-ready{ transform: none; }
@@ -405,7 +401,6 @@ a { color: inherit; }
   margin-bottom: 1.25rem;
 }
 
-/* Play button */
 .play-button{
   width: 50px;
   height: 50px;
@@ -454,7 +449,6 @@ a { color: inherit; }
   margin-left: 0;
 }
 
-/* Progress bar */
 .progress-container{
   flex: 1;
   height: 8px;
@@ -481,7 +475,6 @@ a { color: inherit; }
   font-variant-numeric: tabular-nums;
 }
 
-/* Purchase button: full width variant */
 .purchase-button{
   width: 100%;
   margin-top: .35rem;
@@ -505,15 +498,19 @@ a { color: inherit; }
 }
 
 /* =========================
-   Contact Page (matches theme + animated glow + IG icon)
+   Contact Page (pulled up slightly)
    ========================= */
 
 .contact-section{
-  min-height: calc(100vh - 160px);
+  /* Pull the whole contact layout UP to counter main-content padding */
+  margin-top: -2rem;
+
+  min-height: calc(100vh - 120px);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4rem 2rem;
+
+  padding: 3.25rem 2rem 4rem;
 }
 
 .contact-container{
@@ -532,7 +529,7 @@ a { color: inherit; }
 .contact-subtitle{
   font-size: 1.1rem;
   color: var(--text-secondary);
-  margin-bottom: 3.5rem;
+  margin-bottom: 3rem; /* slightly tighter */
 }
 
 .contact-card{
@@ -644,4 +641,16 @@ a { color: inherit; }
 @keyframes fadeInUp{
   from{ opacity: 0; transform: translateY(18px); }
   to{ opacity: 1; transform: translateY(0); }
+}
+
+/* =========================
+   Responsive
+   ========================= */
+@media (max-width: 768px){
+  .nav-container{ padding: 0 1rem; }
+  .main-content{ padding: 2.5rem 1rem; }
+  .beats-grid{ grid-template-columns: 1fr; }
+
+  /* Don’t yank it up too much on mobile */
+  .contact-section{ margin-top: -1rem; }
 }
