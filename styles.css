@@ -10,7 +10,7 @@
   --primary-color:#0b0c10;
   --secondary-color:#ffffff;
   --text-secondary:#667085;
-  --bg-color:#0b0c10;              /* will be overridden by gradient below */
+  --bg-color:#0b0c10;
   --card-bg: rgba(255,255,255,.72);
   --border-color: rgba(17,24,39,.10);
 
@@ -54,6 +54,37 @@ body{
     radial-gradient(900px 500px at 15% 5%, rgba(109,94,252,.18), transparent 55%),
     radial-gradient(900px 500px at 85% 15%, rgba(34,197,94,.12), transparent 55%),
     linear-gradient(180deg, #f8fafc 0%, #f3f4f6 55%, #eef2f7 100%);
+
+  /* ===== Smooth page transitions ===== */
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 240ms cubic-bezier(.2,.9,.2,1),
+              transform 240ms cubic-bezier(.2,.9,.2,1);
+}
+
+/* when page finishes loading */
+body.page-ready{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* when leaving (clicking nav) */
+body.page-leave{
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+/* reduce motion users */
+@media (prefers-reduced-motion: reduce){
+  body{ transition: none !important; transform: none !important; opacity: 1 !important; }
+  body.page-ready, body.page-leave{ transform: none !important; opacity: 1 !important; }
+}
+
+/* Don’t translate on small screens to avoid weirdness */
+@media (max-width: 768px){
+  body{ transform: none; }
+  body.page-ready{ transform: none; }
+  body.page-leave{ transform: none; }
 }
 
 a, button { -webkit-tap-highlight-color: transparent; }
@@ -76,7 +107,6 @@ a { color: inherit; }
   z-index: 100;
   padding: 0.85rem 0;
 
-  /* Frosted glass */
   background: rgba(255,255,255,.60);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -146,7 +176,6 @@ a { color: inherit; }
   border: 1px solid rgba(17,24,39,.08);
 }
 
-/* remove underline animation from old style */
 .nav-link::after{ content:none; }
 
 /* =========================
@@ -163,15 +192,12 @@ a { color: inherit; }
 /* =========================
    Shared Title Animations (ALL pages)
    ========================= */
-
-/* Page titles */
 .hero-title,
 .page-title,
 .contact-title{
   animation: fadeInUp 0.75s ease-out;
 }
 
-/* Page subtitles */
 .hero-subtitle,
 .page-subtitle,
 .contact-subtitle{
@@ -619,8 +645,4 @@ a { color: inherit; }
   from{ opacity: 0; transform: translateY(18px); }
   to{ opacity: 1; transform: translateY(0); }
 }
-
-/* Respect reduced motion */
-@media (prefers-reduced-motion: reduce){
-  *{ animation: none !important; transition: none !important; }
-}
+v
