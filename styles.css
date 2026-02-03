@@ -161,6 +161,24 @@ a { color: inherit; }
 }
 
 /* =========================
+   Shared Title Animations (ALL pages)
+   ========================= */
+
+/* Page titles */
+.hero-title,
+.page-title,
+.contact-title{
+  animation: fadeInUp 0.75s ease-out;
+}
+
+/* Page subtitles */
+.hero-subtitle,
+.page-subtitle,
+.contact-subtitle{
+  animation: fadeInUp 0.75s ease-out 0.15s both;
+}
+
+/* =========================
    Hero
    ========================= */
 .hero{
@@ -179,14 +197,12 @@ a { color: inherit; }
   letter-spacing: -0.04em;
   line-height: 1.05;
   margin-bottom: 1rem;
-  animation: fadeInUp 0.75s ease-out;
 }
 
 .hero-subtitle{
   font-size: clamp(1.05rem, 1.4vw, 1.25rem);
   color: var(--text-secondary);
   margin-bottom: 2.25rem;
-  animation: fadeInUp 0.75s ease-out 0.15s both;
 }
 
 /* Buttons */
@@ -463,28 +479,6 @@ a { color: inherit; }
 }
 
 /* =========================
-   Animations
-   ========================= */
-@keyframes fadeInUp{
-  from{ opacity: 0; transform: translateY(18px); }
-  to{ opacity: 1; transform: translateY(0); }
-}
-
-/* Respect reduced motion */
-@media (prefers-reduced-motion: reduce){
-  *{ animation: none !important; transition: none !important; }
-}
-
-/* =========================
-   Responsive
-   ========================= */
-@media (max-width: 768px){
-  .nav-container{ padding: 0 1rem; }
-  .main-content{ padding: 2.5rem 1rem; }
-  .beats-grid{ grid-template-columns: 1fr; }
-}
-
-/* =========================
    Contact Page (matches theme + animated glow + IG icon)
    ========================= */
 
@@ -616,4 +610,17 @@ a { color: inherit; }
   width: 20px;
   height: 20px;
   fill: currentColor;
+}
+
+/* =========================
+   Animations
+   ========================= */
+@keyframes fadeInUp{
+  from{ opacity: 0; transform: translateY(18px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition: none !important; }
 }
