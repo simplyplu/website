@@ -7,11 +7,10 @@ const beatsData = [
         id: 1,
         name: "Guitar Sad Type Beat - 'Bitter Feelings'",
         audioFile: "beats/bitter feelings.mp3"
+    },
+    {
+        id: 2,
+        name: "Indie Rock Type Beat - 'Vermont'",
+        audioFile: "beats/vermont.mp3"
     }
-    // To add more beats, copy the format above and add here:
-    // {
-    //     id: 2,
-    //     name: "woo2",
-    //     audioFile: "beats/woo2.mp3"
-    // },
 ];
