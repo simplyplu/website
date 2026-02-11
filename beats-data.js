@@ -17,5 +17,10 @@ const beatsData = [
         id: 3,
         name: "Hip Hop Trap Type Beat - 'Swag'",
         audioFile: "beats/swag.mp3"
+    },
+    {
+        id: 4,
+        name: "Hip Top Trap Groovy Type Beat - 'Beaver'",
+        audioFile: "beats/plaque.mp3"
     }
 ];
