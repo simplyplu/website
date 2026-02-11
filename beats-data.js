@@ -4,17 +4,18 @@
 
 const beatsData = [
     {
-    id: 1,
-    name: "Guitar Sad Type Beat - 'Bitter Feelings'",
-    audioFile: "beats/bitter feelings.mp3"
-},
-{
-    id: 2,
-    name: "Indie Rock Type Beat - 'Vermont'",
-    audioFile: "beats/vermont.mp3"
-},
-{
-    id: 3,
-    name: "Hip Hop Trap Type Beat - 'Swag'",
-    audioFile: "beats/swag.mp3"
-}
+        id: 1,
+        name: "Guitar Sad Type Beat - 'Bitter Feelings'",
+        audioFile: "beats/bitter feelings.mp3"
+    },
+    {
+        id: 2,
+        name: "Indie Rock Type Beat - 'Vermont'",
+        audioFile: "beats/vermont.mp3"
+    },
+    {
+        id: 3,
+        name: "Hip Hop Trap Type Beat - 'Swag'",
+        audioFile: "beats/swag.mp3"
+    }
+];
