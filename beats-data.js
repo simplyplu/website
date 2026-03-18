@@ -5,7 +5,7 @@
 const beatsData = [
     {
         id: 1,
-        name: "Trap Melodic Type Beat - 'Vercel'",
+        name: "Trap Melodic Type Beat - 'Pain'",
         audioFile: "beats/might.mp3"
     },
     {
