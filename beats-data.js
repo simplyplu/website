@@ -5,8 +5,8 @@
 const beatsData = [
     {
         id: 1,
-        name: "Sad Melodic Type Beat - 'Vercel'",
-        audioFile: "beats/Sad Melodic Type Beat Teeth.mp3"
+        name: "Trap Melodic Type Beat - 'Vercel'",
+        audioFile: "beats/might.mp3"
     },
     {
         id: 2,
